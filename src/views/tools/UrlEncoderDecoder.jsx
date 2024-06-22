@@ -5,15 +5,17 @@ import vars from 'styles/vars'
 import CopyButton from 'components/CopyButton'
 
 export default () => {
-  const [encodedUrlFocused, setEncodedUrlFocused] = useState()
   const [encodedUrl, setEncodedUrl] = useState()
+  const [encodedUrlFocused, setEncodedUrlFocused] = useState()
+  const [encodedUrlIsHovered, setEncodedUrlIsHovered] = useState(false)
   const onEncodedUrlChange = text => {
     setEncodedUrl(text)
     setDecodedUrl(decodeURIComponent(text))
   }
 
-  const [decodedUrlFocused, setDecodedUrlFocused] = useState()
   const [decodedUrl, setDecodedUrl] = useState()
+  const [decodedUrlFocused, setDecodedUrlFocused] = useState()
+  const [decodedUrlIsHovered, setDecodedUrlIsHovered] = useState(false)
   const onDecodedUrlChange = text => {
     setDecodedUrl(text)
     setEncodedUrl(encodeURIComponent(text))
@@ -21,20 +23,22 @@ export default () => {
 
   return (
     <View style={styles.contentWrapper}>
-      <View style={styles.inputWrapper}>
+      <View
+        style={styles.inputWrapper}
+        onMouseEnter={() => setEncodedUrlIsHovered(true)}
+        onMouseLeave={() => setEncodedUrlIsHovered(false)}
+      >
         {
           encodedUrl && (
-            <>
-              <View style={styles.placeholderWrapper}>
-                <Text style={styles.placeholder}>
-                  Encoded URL
-                </Text>
-              </View>
-
-              <CopyButton text={encodedUrl} />
-            </>
+            <View style={styles.placeholderWrapper}>
+              <Text style={styles.placeholder}>
+                Encoded URL
+              </Text>
+            </View>
           )
         }
+
+        {encodedUrlIsHovered && <CopyButton text={encodedUrl} />}
 
         <TextInput
           multiline
@@ -49,20 +53,22 @@ export default () => {
         />
       </View>
 
-      <View style={styles.inputWrapper}>
+      <View
+        style={styles.inputWrapper}
+        onMouseEnter={() => setDecodedUrlIsHovered(true)}
+        onMouseLeave={() => setDecodedUrlIsHovered(false)}
+      >
         {
           decodedUrl && (
-            <>
-              <View style={styles.placeholderWrapper}>
-                <Text style={styles.placeholder}>
-                  Decoded URL
-                </Text>
-              </View>
-
-              <CopyButton text={decodedUrl} />
-            </>
+            <View style={styles.placeholderWrapper}>
+              <Text style={styles.placeholder}>
+                Decoded URL
+              </Text>
+            </View>
           )
         }
+
+        {decodedUrlIsHovered && <CopyButton text={decodedUrl} />}
 
         <TextInput
           multiline
