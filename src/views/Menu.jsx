@@ -36,7 +36,7 @@ export default () => {
 
 const styles = StyleSheet.create({
   menuWrapper: {
-    width: 300,
+    width: 280,
     backgroundColor: vars.raisinBlack
   },
   menuContentWrapper: {
