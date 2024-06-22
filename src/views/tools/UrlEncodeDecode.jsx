@@ -5,12 +5,14 @@ import vars from 'styles/vars'
 import CopyButton from 'components/CopyButton'
 
 export default () => {
+  const [encodedUrlFocused, setEncodedUrlFocused] = useState()
   const [encodedUrl, setEncodedUrl] = useState()
   const onEncodedUrlChange = text => {
     setEncodedUrl(text)
     setDecodedUrl(decodeURIComponent(text))
   }
 
+  const [decodedUrlFocused, setDecodedUrlFocused] = useState()
   const [decodedUrl, setDecodedUrl] = useState()
   const onDecodedUrlChange = text => {
     setDecodedUrl(text)
@@ -38,10 +40,12 @@ export default () => {
           multiline
           value={encodedUrl}
           enableFocusRing={false}
-          style={styles.textInput}
           placeholder='Encoded URL'
           onChangeText={onEncodedUrlChange}
+          onFocus={() => setEncodedUrlFocused(true)}
+          onBlur={() => setEncodedUrlFocused(false)}
           placeholderTextColor={vars.battleshipGray}
+          style={[styles.textInput, encodedUrlFocused && styles.textInputFocused]}
         />
       </View>
 
@@ -64,10 +68,12 @@ export default () => {
           multiline
           value={decodedUrl}
           enableFocusRing={false}
-          style={styles.textInput}
           placeholder='Decoded URL'
           onChangeText={onDecodedUrlChange}
+          onFocus={() => setDecodedUrlFocused(true)}
+          onBlur={() => setDecodedUrlFocused(false)}
           placeholderTextColor={vars.battleshipGray}
+          style={[styles.textInput, decodedUrlFocused && styles.textInputFocused]}
         />
       </View>
     </View>
@@ -105,5 +111,8 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     paddingBottom: 12,
     backgroundColor: vars.raisinBlack
+  },
+  textInputFocused: {
+    backgroundColor: vars.jet2
   }
 })
