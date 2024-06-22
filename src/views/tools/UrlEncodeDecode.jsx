@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 
 import vars from 'styles/vars'
-import CopyButton from './CopyButton'
+import CopyButton from 'components/CopyButton'
 
 export default () => {
   const [encodedUrl, setEncodedUrl] = useState()
