@@ -29,11 +29,10 @@ const styles = StyleSheet.create({
     padding: 24
   },
   textInput: {
+    padding: 16,
     height: '50%',
     paddingTop: 12,
     borderRadius: 6,
-    paddingLeft: 16,
-    paddingRight: 16,
     paddingBottom: 12,
     backgroundColor: '#312E34'
   }
