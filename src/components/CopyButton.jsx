@@ -54,29 +54,6 @@ export default ({ text, onPress }) => {
 }
 
 const styles = StyleSheet.create({
-  contentWrapper: {
-    flex: 1,
-    gap: 24,
-    padding: 24
-  },
-  inputWrapper: {
-    flex: 1,
-    position: 'relative'
-  },
-  placeholderWrapper: {
-    top: -10,
-    left: 12,
-    zIndex: 2,
-    borderRadius: 2,
-    paddingVertical: 2,
-    paddingHorizontal: 6,
-    position: 'absolute',
-    backgroundColor: vars.raisinBlack2
-  },
-  placeholder: {
-    fontSize: 12,
-    color: vars.battleshipGray
-  },
   copyButtonWrapper: {
     top: 12,
     right: 12,
@@ -87,6 +64,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 6,
+    cursor: 'default',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: vars.raisinBlack2
@@ -94,13 +72,5 @@ const styles = StyleSheet.create({
   copyButtonText: {
     fontSize: 12,
     color: vars.battleshipGray
-  },
-  textInput: {
-    flex: 1,
-    padding: 16,
-    paddingTop: 12,
-    borderRadius: 6,
-    paddingBottom: 12,
-    backgroundColor: vars.raisinBlack
   }
 })
