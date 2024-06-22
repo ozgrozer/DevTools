@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Start the timer
+start_time=$(date +%s)
+
+# Variables
 APP_NAME="DevTools"
 BUILD_DIR="./build"
 DMG_NAME="${APP_NAME}.dmg"
@@ -31,4 +35,12 @@ rm -rf "$temp_dir"
 echo "9. Removing ${APP_NAME}.app..."
 rm -rf "${BUILD_DIR}/${APP_NAME}.app"
 
-echo "10. DMG creation complete. ${DMG_NAME} is now in ${BUILD_DIR}/"
+# Calculate the elapsed time
+end_time=$(date +%s)
+elapsed_time=$((end_time - start_time))
+
+# Convert seconds to minutes and seconds
+minutes=$((elapsed_time / 60))
+seconds=$((elapsed_time % 60))
+
+echo "10. ${DMG_NAME} is created. Total execution time: ${minutes} minutes and ${seconds} seconds."
