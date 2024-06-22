@@ -26,6 +26,7 @@
     "prettier": "2.8.8",
     "react-native-macos": "^0.73.32",
     "react-test-renderer": "18.2.0",
+    "standard": "^17.1.0",
     "typescript": "5.0.4"
   },
   "engines": {
