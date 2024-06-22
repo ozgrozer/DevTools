@@ -1,6 +1,6 @@
 #import "AppDelegate.h"
-
 #import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
 
 @implementation AppDelegate
 
@@ -11,7 +11,15 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
 
-  return [super applicationDidFinishLaunching:notification];
+  // Call the super method to continue application launch
+  [super applicationDidFinishLaunching:notification];
+
+  // Set the initial window size here
+  NSRect frame = NSMakeRect(0, 0, 800, 600);
+  [self.window setFrame:frame display:YES];
+
+  // Center the window
+  [self.window center];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
