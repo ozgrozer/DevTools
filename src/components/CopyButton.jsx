@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 6,
-    cursor: 'default',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: vars.raisinBlack2
