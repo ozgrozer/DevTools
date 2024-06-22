@@ -1,7 +1,7 @@
 module.exports = [
   {
-    id: 'UrlEncodeDecode',
-    title: 'URL Encode/Decode'
+    id: 'UrlEncoderDecoder',
+    title: 'URL Encoder/Decoder'
   },
   {
     id: 'UrlParser',
