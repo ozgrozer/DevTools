@@ -24,74 +24,95 @@ const format = ({ text }) => {
   }
 }
 
-export default () => {
+const Input = ({ input, setInput, setOutput }) => {
   const [inputFocused, setInputFocused] = useState()
-  const [input, setInput] = useState()
   const onInputChange = text => {
     setInput(text)
     setOutput(format({ text }))
   }
 
+  return (
+    <View style={styles.inputWrapper}>
+      {
+        input && (
+          <>
+            <View style={styles.placeholderWrapper}>
+              <Text style={styles.placeholder}>
+                Input
+              </Text>
+            </View>
+
+            <CopyButton text={input} />
+          </>
+        )
+      }
+
+      <TextInput
+        multiline
+        value={input}
+        placeholder='Input'
+        enableFocusRing={false}
+        onChangeText={onInputChange}
+        onFocus={() => setInputFocused(true)}
+        onBlur={() => setInputFocused(false)}
+        placeholderTextColor={vars.battleshipGray}
+        style={[styles.textInput, inputFocused && styles.textInputFocused]}
+      />
+    </View>
+  )
+}
+
+const Output = ({ output, setInput, setOutput }) => {
   const [outputFocused, setOutputFocused] = useState()
+
+  return (
+    <View style={styles.inputWrapper}>
+      {
+        output && (
+          <>
+            <View style={styles.placeholderWrapper}>
+              <Text style={styles.placeholder}>
+                Output
+              </Text>
+            </View>
+
+            <CopyButton text={output} />
+          </>
+        )
+      }
+
+      <TextInput
+        multiline
+        value={output}
+        editable={false}
+        placeholder='Output'
+        enableFocusRing={false}
+        onFocus={() => setOutputFocused(true)}
+        onBlur={() => setOutputFocused(false)}
+        placeholderTextColor={vars.battleshipGray}
+        style={[styles.textInput, outputFocused && styles.textInputFocused]}
+      />
+    </View>
+  )
+}
+
+export default () => {
+  const [input, setInput] = useState()
   const [output, setOutput] = useState()
 
   return (
     <View style={styles.contentWrapper}>
-      <View style={styles.inputWrapper}>
-        {
-          input && (
-            <>
-              <View style={styles.placeholderWrapper}>
-                <Text style={styles.placeholder}>
-                  Input
-                </Text>
-              </View>
+      <Input
+        input={input}
+        setInput={setInput}
+        setOutput={setOutput}
+      />
 
-              <CopyButton text={input} />
-            </>
-          )
-        }
-
-        <TextInput
-          multiline
-          value={input}
-          placeholder='Input'
-          enableFocusRing={false}
-          onChangeText={onInputChange}
-          onFocus={() => setInputFocused(true)}
-          onBlur={() => setInputFocused(false)}
-          placeholderTextColor={vars.battleshipGray}
-          style={[styles.textInput, inputFocused && styles.textInputFocused]}
-        />
-      </View>
-
-      <View style={styles.inputWrapper}>
-        {
-          output && (
-            <>
-              <View style={styles.placeholderWrapper}>
-                <Text style={styles.placeholder}>
-                  Output
-                </Text>
-              </View>
-
-              <CopyButton text={output} />
-            </>
-          )
-        }
-
-        <TextInput
-          multiline
-          value={output}
-          editable={false}
-          placeholder='Output'
-          enableFocusRing={false}
-          onFocus={() => setOutputFocused(true)}
-          onBlur={() => setOutputFocused(false)}
-          placeholderTextColor={vars.battleshipGray}
-          style={[styles.textInput, outputFocused && styles.textInputFocused]}
-        />
-      </View>
+      <Output
+        output={output}
+        setInput={setInput}
+        setOutput={setOutput}
+      />
     </View>
   )
 }
