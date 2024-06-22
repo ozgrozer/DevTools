@@ -2,13 +2,16 @@ import { View, StyleSheet } from 'react-native'
 
 import Menu from './Menu'
 import Content from './Content'
+import { AppProvider } from 'contexts/AppContext'
 
 export default () => {
   return (
-    <View style={styles.container}>
-      <Menu />
-      <Content />
-    </View>
+    <AppProvider>
+      <View style={styles.container}>
+        <Menu />
+        <Content />
+      </View>
+    </AppProvider>
   )
 }
 
