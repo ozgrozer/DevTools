@@ -1,5 +1,6 @@
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
 
+import vars from 'styles/vars'
 import buttons from 'functions/buttons'
 import { AppContext } from 'contexts/AppContext'
 
@@ -36,7 +37,7 @@ export default () => {
 const styles = StyleSheet.create({
   menuWrapper: {
     width: 300,
-    backgroundColor: '#2A282C'
+    backgroundColor: vars.raisinBlack
   },
   menuContentWrapper: {
     padding: 24
@@ -48,9 +49,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   active: {
-    backgroundColor: '#423E45'
+    backgroundColor: vars.jet
   },
   buttonText: {
-    color: '#fff'
+    color: vars.white
   }
 })

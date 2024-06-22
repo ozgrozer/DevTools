@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 
+import vars from 'styles/vars'
+
 export default () => {
   const [encodedUrl, setEncodedUrl] = useState()
   const onEncodedUrlChange = text => {
@@ -79,11 +81,11 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 6,
     position: 'absolute',
-    backgroundColor: '#222024'
+    backgroundColor: vars.raisinBlack2
   },
   placeholder: {
     fontSize: 12,
-    color: '#fff'
+    color: vars.white
   },
   textInput: {
     flex: 1,
@@ -91,6 +93,6 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     borderRadius: 6,
     paddingBottom: 12,
-    backgroundColor: '#2A282C'
+    backgroundColor: vars.raisinBlack
   }
 })

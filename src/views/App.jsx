@@ -1,6 +1,7 @@
 import { View, StyleSheet } from 'react-native'
 
 import Menu from './Menu'
+import vars from 'styles/vars'
 import Content from './Content'
 import { AppProvider } from 'contexts/AppContext'
 
@@ -19,6 +20,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#252327'
+    backgroundColor: vars.raisinBlack2
   }
 })
