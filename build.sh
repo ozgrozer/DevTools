@@ -6,7 +6,8 @@ start_time=$(date +%s)
 # Variables
 APP_NAME="DevTools"
 BUILD_DIR="./build"
-DMG_NAME="${APP_NAME}.dmg"
+VERSION=$(cat package.json | python -c "import sys, json; print(json.load(sys.stdin)['version'])")
+DMG_NAME="${APP_NAME}-${VERSION}.dmg"
 
 echo "1. Building ${APP_NAME}..."
 xcodebuild -workspace ./macos/${APP_NAME}.xcworkspace -scheme ${APP_NAME}-macOS -configuration Release -derivedDataPath ${BUILD_DIR}
