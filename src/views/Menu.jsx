@@ -1,19 +1,11 @@
-import { useEffect } from 'react'
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
 
+import buttons from 'functions/buttons'
 import { AppContext } from 'contexts/AppContext'
 
 export default () => {
   const { state, setState } = AppContext()
   const { activeButtonId } = state
-
-  const buttons = [
-    { id: 1, title: 'URL Encode/Decode' },
-    { id: 2, title: 'URL Parser' }
-  ]
-  useEffect(() => {
-    setState({ activeButtonId: buttons[0].id })
-  }, [])
 
   return (
     <View style={styles.menuWrapper}>
