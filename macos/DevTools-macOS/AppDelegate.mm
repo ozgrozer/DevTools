@@ -1,6 +1,6 @@
 #import "AppDelegate.h"
-#import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <React/RCTBundleURLProvider.h>
 
 @implementation AppDelegate
 
@@ -14,12 +14,24 @@
   // Call the super method to continue application launch
   [super applicationDidFinishLaunching:notification];
 
-  // Set the initial window size here
-  NSRect frame = NSMakeRect(0, 0, 800, 600);
+  // Define window width and height
+  CGFloat windowWidth = 1000;
+  CGFloat windowHeight = 600;
+
+  // Get screen size
+  NSScreen *screen = [NSScreen mainScreen];
+  NSRect screenRect = [screen frame];
+
+  // Calculate the center position
+  CGFloat xPos = (screenRect.size.width - windowWidth) / 2;
+  CGFloat yPos = (screenRect.size.height - windowHeight) / 2;
+
+  // Set the initial window size and position here
+  NSRect frame = NSMakeRect(xPos, yPos, windowWidth, windowHeight);
   [self.window setFrame:frame display:YES];
 
-  // Center the window
-  [self.window center];
+  // Make sure the window is initialized and displayed before centering
+  [self.window makeKeyAndOrderFront:nil];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
