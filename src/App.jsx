@@ -1,18 +1,13 @@
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+
+import Menu from './Menu'
+import Content from './Content'
 
 export default () => {
   return (
     <View style={styles.container}>
-      <View style={styles.menuWrapper}>
-        <ScrollView
-          contentContainerStyle={styles.menuContentWrapper}
-        >
-          <Text>menuWrapper</Text>
-        </ScrollView>
-      </View>
-      <View style={styles.contentWrapper}>
-        <Text>contentWrapper</Text>
-      </View>
+      <Menu />
+      <Content />
     </View>
   )
 }
@@ -22,15 +17,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     backgroundColor: '#252327'
-  },
-  menuWrapper: {
-    width: 300,
-    backgroundColor: '#2A282C'
-  },
-  menuContentWrapper: {
-    padding: 24
-  },
-  contentWrapper: {
-    flex: 1
   }
 })
