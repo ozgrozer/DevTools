@@ -4,7 +4,6 @@ import buttons from 'functions/buttons'
 import { AppContext } from 'contexts/AppContext'
 
 const componentMap = {
-  UrlParser: lazy(() => import('views/tools/UrlParser')),
   UrlEncoderDecoder: lazy(() => import('views/tools/UrlEncoderDecoder'))
 }
 
