@@ -6,6 +6,7 @@ module.exports = {
       {
         alias: {
           views: './src/views',
+          styles: './src/styles',
           contexts: './src/contexts',
           functions: './src/functions'
         }
