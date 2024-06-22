@@ -7,11 +7,13 @@ export default () => {
   const [encodedUrl, setEncodedUrl] = useState()
   const onEncodedUrlChange = text => {
     setEncodedUrl(text)
+    setDecodedUrl(decodeURIComponent(text))
   }
 
   const [decodedUrl, setDecodedUrl] = useState()
   const onDecodedUrlChange = text => {
     setDecodedUrl(text)
+    setEncodedUrl(encodeURIComponent(text))
   }
 
   return (
