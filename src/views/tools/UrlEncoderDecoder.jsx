@@ -4,8 +4,7 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import vars from 'styles/vars'
 import CopyButton from 'components/CopyButton'
 
-export default () => {
-  const [encodedUrl, setEncodedUrl] = useState()
+const EncodedUrl = ({ encodedUrl, setEncodedUrl, setDecodedUrl }) => {
   const [encodedUrlFocused, setEncodedUrlFocused] = useState()
   const [encodedUrlIsHovered, setEncodedUrlIsHovered] = useState(false)
   const onEncodedUrlChange = text => {
@@ -13,7 +12,40 @@ export default () => {
     setDecodedUrl(decodeURIComponent(text))
   }
 
-  const [decodedUrl, setDecodedUrl] = useState()
+  return (
+    <View
+      style={styles.inputWrapper}
+      onMouseEnter={() => setEncodedUrlIsHovered(true)}
+      onMouseLeave={() => setEncodedUrlIsHovered(false)}
+    >
+      {
+        encodedUrl && (
+          <View style={styles.placeholderWrapper}>
+            <Text style={styles.placeholder}>
+              Encoded URL
+            </Text>
+          </View>
+        )
+      }
+
+      {encodedUrlIsHovered && <CopyButton text={encodedUrl} />}
+
+      <TextInput
+        multiline
+        value={encodedUrl}
+        enableFocusRing={false}
+        placeholder='Encoded URL'
+        onChangeText={onEncodedUrlChange}
+        onFocus={() => setEncodedUrlFocused(true)}
+        onBlur={() => setEncodedUrlFocused(false)}
+        placeholderTextColor={vars.battleshipGray}
+        style={[styles.textInput, encodedUrlFocused && styles.textInputFocused]}
+      />
+    </View>
+  )
+}
+
+const DecodedUrl = ({ decodedUrl, setEncodedUrl, setDecodedUrl }) => {
   const [decodedUrlFocused, setDecodedUrlFocused] = useState()
   const [decodedUrlIsHovered, setDecodedUrlIsHovered] = useState(false)
   const onDecodedUrlChange = text => {
@@ -22,66 +54,55 @@ export default () => {
   }
 
   return (
+    <View
+      style={styles.inputWrapper}
+      onMouseEnter={() => setDecodedUrlIsHovered(true)}
+      onMouseLeave={() => setDecodedUrlIsHovered(false)}
+    >
+      {
+        decodedUrl && (
+          <View style={styles.placeholderWrapper}>
+            <Text style={styles.placeholder}>
+              Decoded URL
+            </Text>
+          </View>
+        )
+      }
+
+      {decodedUrlIsHovered && <CopyButton text={decodedUrl} />}
+
+      <TextInput
+        multiline
+        value={decodedUrl}
+        enableFocusRing={false}
+        placeholder='Decoded URL'
+        onChangeText={onDecodedUrlChange}
+        onFocus={() => setDecodedUrlFocused(true)}
+        onBlur={() => setDecodedUrlFocused(false)}
+        placeholderTextColor={vars.battleshipGray}
+        style={[styles.textInput, decodedUrlFocused && styles.textInputFocused]}
+      />
+    </View>
+  )
+}
+
+export default () => {
+  const [encodedUrl, setEncodedUrl] = useState()
+  const [decodedUrl, setDecodedUrl] = useState()
+
+  return (
     <View style={styles.contentWrapper}>
-      <View
-        style={styles.inputWrapper}
-        onMouseEnter={() => setEncodedUrlIsHovered(true)}
-        onMouseLeave={() => setEncodedUrlIsHovered(false)}
-      >
-        {
-          encodedUrl && (
-            <View style={styles.placeholderWrapper}>
-              <Text style={styles.placeholder}>
-                Encoded URL
-              </Text>
-            </View>
-          )
-        }
+      <EncodedUrl
+        encodedUrl={encodedUrl}
+        setEncodedUrl={setEncodedUrl}
+        setDecodedUrl={setDecodedUrl}
+      />
 
-        {encodedUrlIsHovered && <CopyButton text={encodedUrl} />}
-
-        <TextInput
-          multiline
-          value={encodedUrl}
-          enableFocusRing={false}
-          placeholder='Encoded URL'
-          onChangeText={onEncodedUrlChange}
-          onFocus={() => setEncodedUrlFocused(true)}
-          onBlur={() => setEncodedUrlFocused(false)}
-          placeholderTextColor={vars.battleshipGray}
-          style={[styles.textInput, encodedUrlFocused && styles.textInputFocused]}
-        />
-      </View>
-
-      <View
-        style={styles.inputWrapper}
-        onMouseEnter={() => setDecodedUrlIsHovered(true)}
-        onMouseLeave={() => setDecodedUrlIsHovered(false)}
-      >
-        {
-          decodedUrl && (
-            <View style={styles.placeholderWrapper}>
-              <Text style={styles.placeholder}>
-                Decoded URL
-              </Text>
-            </View>
-          )
-        }
-
-        {decodedUrlIsHovered && <CopyButton text={decodedUrl} />}
-
-        <TextInput
-          multiline
-          value={decodedUrl}
-          enableFocusRing={false}
-          placeholder='Decoded URL'
-          onChangeText={onDecodedUrlChange}
-          onFocus={() => setDecodedUrlFocused(true)}
-          onBlur={() => setDecodedUrlFocused(false)}
-          placeholderTextColor={vars.battleshipGray}
-          style={[styles.textInput, decodedUrlFocused && styles.textInputFocused]}
-        />
-      </View>
+      <DecodedUrl
+        decodedUrl={decodedUrl}
+        setEncodedUrl={setEncodedUrl}
+        setDecodedUrl={setDecodedUrl}
+      />
     </View>
   )
 }
