@@ -1,12 +1,10 @@
 module.exports = [
   {
-    id: 1,
-    title: 'URL Encode/Decode',
-    component: 'UrlEncodeDecode'
+    id: 'UrlEncodeDecode',
+    title: 'URL Encode/Decode'
   },
   {
-    id: 2,
-    title: 'URL Parser',
-    component: 'UrlParser'
+    id: 'UrlParser',
+    title: 'URL Parser'
   }
 ]

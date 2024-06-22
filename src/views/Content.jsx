@@ -12,8 +12,8 @@ export default () => {
   const { state } = AppContext()
   const { activeButtonId } = state
 
-  const buttonConfig = buttons.find((button) => button.id === activeButtonId)
-  const componentName = buttonConfig ? buttonConfig.component : null
+  const buttonConfig = buttons.find(button => button.id === activeButtonId)
+  const componentName = buttonConfig ? buttonConfig.id : null
   const CustomComponent = componentName ? componentMap[componentName] : null
 
   return (
