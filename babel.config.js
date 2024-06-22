@@ -5,6 +5,7 @@ module.exports = {
       'module-resolver',
       {
         alias: {
+          views: './src/views',
           contexts: './src/contexts'
         }
       }
