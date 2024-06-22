@@ -5,7 +5,9 @@
   "scripts": {
     "start": "react-native start",
     "start:reset-cache": "react-native start --reset-cache",
-    "macos": "npx react-native run-macos"
+    "macos": "npx react-native run-macos",
+    "build": "xcodebuild -workspace ./macos/DevTools.xcworkspace -scheme DevTools-macOS -configuration Release -derivedDataPath ./build",
+    "postbuild": "bash -c 'mv ./build/Build/Products/Release/DevTools.app ./build/ && find ./build -mindepth 1 -maxdepth 1 ! -name DevTools.app -exec rm -rf {} +'"
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.14.1",
