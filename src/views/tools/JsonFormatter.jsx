@@ -26,26 +26,29 @@ const format = ({ text }) => {
 
 const Input = ({ input, setInput, setOutput }) => {
   const [inputFocused, setInputFocused] = useState()
+  const [inputIsHovered, setInputIsHovered] = useState(false)
   const onInputChange = text => {
     setInput(text)
     setOutput(format({ text }))
   }
 
   return (
-    <View style={styles.inputWrapper}>
+    <View
+      style={styles.inputWrapper}
+      onMouseEnter={() => setInputIsHovered(true)}
+      onMouseLeave={() => setInputIsHovered(false)}
+    >
       {
         input && (
-          <>
-            <View style={styles.placeholderWrapper}>
-              <Text style={styles.placeholder}>
-                Input
-              </Text>
-            </View>
-
-            <CopyButton text={input} />
-          </>
+          <View style={styles.placeholderWrapper}>
+            <Text style={styles.placeholder}>
+              Input
+            </Text>
+          </View>
         )
       }
+
+      {inputIsHovered && <CopyButton text={input} />}
 
       <TextInput
         multiline
@@ -64,22 +67,25 @@ const Input = ({ input, setInput, setOutput }) => {
 
 const Output = ({ output, setInput, setOutput }) => {
   const [outputFocused, setOutputFocused] = useState()
+  const [ouputIsHovered, setOutputIsHovered] = useState(false)
 
   return (
-    <View style={styles.inputWrapper}>
+    <View
+      style={styles.inputWrapper}
+      onMouseEnter={() => setOutputIsHovered(true)}
+      onMouseLeave={() => setOutputIsHovered(false)}
+    >
       {
         output && (
-          <>
-            <View style={styles.placeholderWrapper}>
-              <Text style={styles.placeholder}>
-                Output
-              </Text>
-            </View>
-
-            <CopyButton text={output} />
-          </>
+          <View style={styles.placeholderWrapper}>
+            <Text style={styles.placeholder}>
+              Output
+            </Text>
+          </View>
         )
       }
+
+      {ouputIsHovered && <CopyButton text={output} />}
 
       <TextInput
         multiline
