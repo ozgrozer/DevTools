@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
 
+import { AppContext } from 'contexts/AppContext'
+
 export default () => {
+  const { state, setState } = AppContext()
+  const { activeButtonId } = state
+
   const buttons = [
     { id: 1, title: 'URL Encode/Decode' },
     { id: 2, title: 'URL Parser' }
   ]
-  const [activeButtonId, setActiveButtonId] = useState(buttons[0].id)
+  useEffect(() => {
+    setState({ activeButtonId: buttons[0].id })
+  }, [])
 
   return (
     <View style={styles.menuWrapper}>
@@ -19,7 +26,7 @@ export default () => {
               <TouchableOpacity
                 key={key}
                 activeOpacity={1}
-                onPress={() => setActiveButtonId(button.id)}
+                onPress={() => setState({ activeButtonId: button.id })}
                 style={[styles.buttonContainer, activeButtonId === button.id ? styles.active : '']}
               >
                 <Text style={styles.buttonText}>
