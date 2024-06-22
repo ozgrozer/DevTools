@@ -8,7 +8,8 @@ module.exports = {
           views: './src/views',
           styles: './src/styles',
           contexts: './src/contexts',
-          functions: './src/functions'
+          functions: './src/functions',
+          components: './src/components'
         }
       }
     ]
