@@ -35,8 +35,8 @@ export default () => {
           enableFocusRing={false}
           style={styles.textInput}
           placeholder='Encoded URL'
-          placeholderTextColor='#888'
           onChangeText={onEncodedUrlChange}
+          placeholderTextColor={vars.battleshipGray}
         />
       </View>
 
@@ -57,8 +57,8 @@ export default () => {
           enableFocusRing={false}
           style={styles.textInput}
           placeholder='Decoded URL'
-          placeholderTextColor='#888'
           onChangeText={onDecodedUrlChange}
+          placeholderTextColor={vars.battleshipGray}
         />
       </View>
     </View>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     fontSize: 12,
-    color: vars.white
+    color: vars.battleshipGray
   },
   textInput: {
     flex: 1,
