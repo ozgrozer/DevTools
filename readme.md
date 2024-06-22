@@ -1,6 +1,6 @@
 # DevTools
 
-Native MacOS app for developers
+The toolkit of developers
 
 ## Preview
 
