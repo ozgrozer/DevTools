@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "react-native start",
+    "start:reset-cache": "react-native start --reset-cache",
     "macos": "npx react-native run-macos"
   },
   "dependencies": {
