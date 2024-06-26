@@ -5,6 +5,7 @@ import { AppContext } from 'contexts/AppContext'
 
 const componentMap = {
   JsonFormatter: lazy(() => import('views/tools/JsonFormatter')),
+  UnixTimeConverter: lazy(() => import('views/tools/UnixTimeConverter')),
   UrlEncoderDecoder: lazy(() => import('views/tools/UrlEncoderDecoder'))
 }
 
