@@ -1,7 +1,8 @@
 module.exports = [
   {
     id: 'UnixTimeConverter',
-    title: 'Unix Time Converter'
+    title: 'Unix Time Converter',
+    hasSettingsButton: true
   },
   {
     id: 'UrlEncoderDecoder',

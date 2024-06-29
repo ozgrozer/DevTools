@@ -15,16 +15,28 @@ export default () => {
       >
         {
           buttons.map((button, key) => {
+            const buttonIsActive = activeButtonId === button.id
+            const settingsButtonIsActive = false
+
             return (
               <TouchableOpacity
                 key={key}
                 activeOpacity={1}
                 onPress={() => setState({ activeButtonId: button.id })}
-                style={[styles.buttonContainer, activeButtonId === button.id ? styles.active : '']}
+                style={[styles.buttonContainer, buttonIsActive ? styles.active : '']}
               >
                 <Text style={styles.buttonText}>
                   {button.title}
                 </Text>
+
+                {(buttonIsActive && button.hasSettingsButton) && (
+                  <TouchableOpacity
+                    activeOpacity={1}
+                    style={[styles.settingsButton, settingsButtonIsActive ? styles.active : '']}
+                  >
+                    <Text>S</Text>
+                  </TouchableOpacity>
+                )}
               </TouchableOpacity>
             )
           })
@@ -53,5 +65,14 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: vars.white
+  },
+  settingsButton: {
+    top: 0,
+    right: 0,
+    width: 40,
+    height: 40,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
